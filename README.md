@@ -8,6 +8,6 @@ Q.4) Find the total number of legs
 
 Q.5) Group the animals by their number of legs
 
-Q.6) Count the number of animals in each specie // 2 2 2
+Q.6) Count the number of animals in each specie
 
-Q.7) Count the number of species // 3
+Q.7) Count the number of species
