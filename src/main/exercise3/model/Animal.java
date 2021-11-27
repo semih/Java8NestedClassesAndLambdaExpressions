@@ -19,10 +19,5 @@ public abstract class Animal {
 
     public abstract void eat(); // abstract method
 
-    @Override
-    public String toString() {
-        return "Animal{" +
-                "legs=" + legs +
-                '}';
-    }
+
 }

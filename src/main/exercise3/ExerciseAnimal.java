@@ -2,10 +2,7 @@ package exercise3;
 
 import exercise3.model.*;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -39,7 +36,7 @@ public class ExerciseAnimal {
                                     }
                                 }).findFirst());
 
-        // Q.5) Find the total number of legs -- reduce kullanılabilir.
+        // Q.5) Find the total number of legs -- reduce function can be used.
         int totalNumberOfLegs = animals.stream().mapToInt(Animal::getLegs).sum();
         System.out.println(totalNumberOfLegs);
 
@@ -48,8 +45,18 @@ public class ExerciseAnimal {
         Map<Integer, List<Animal>> animalMap = animals.stream().collect(Collectors.groupingBy(Animal::getLegs));
         System.out.println(animalMap);
 
-        animals.add(new Cat());
-        animals.add(new Spider());
-        animals.add(new Fish("Jaws"));
+        // Q.7) Count the number of animals in each specie
+        List<Animal> animalList = new ArrayList<>(animals); // handles UnsupportedOperationException
+        animalList.add(new Cat());
+        animalList.add(new Spider());
+        animalList.add(new Fish("Jaws"));
+
+        Map<? extends Class<? extends Animal>, Long> groupedAnimalsInEachSpecie = animalList.stream().collect(Collectors.groupingBy((animal) -> animal.getClass(), Collectors.counting()));
+        System.out.println(groupedAnimalsInEachSpecie);
+
+        // Q.8) Count the number of species
+        long totalNumberOfSpecies = animals.stream().map(Animal::getClass).map((animal) -> animal.getSimpleName()).distinct().count();
+        System.out.println(totalNumberOfSpecies);
+
     }
 }
