@@ -22,7 +22,7 @@ public class ExerciseAnimal {
         List<Animal> pets = animals.stream().filter(isPet).collect(Collectors.toList());
         pets.forEach(p-> System.out.println(p.getClass().getSimpleName()));
 
-        // (Q.3) Find the animal with the highest number of legs
+        // Q.3) Find the animal with the highest number of legs
         System.out.println(animals.stream().sorted(new Comparator<Animal>() {
                                     @Override
                                     public int compare(Animal o1, Animal o2) {
